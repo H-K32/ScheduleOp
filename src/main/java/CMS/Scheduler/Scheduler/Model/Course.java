@@ -1,7 +1,8 @@
 package CMS.Scheduler.Scheduler.Model;
 
-import jakarta.persistence.*;
+ 
 
+import jakarta.persistence.*;
 import java.time.LocalTime;
 
 @Entity
@@ -9,15 +10,18 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseId;
+
     private String courseName;
 
     @ManyToOne
+    @JoinColumn(name = "department_id") // Assuming a foreign key column for department
     private Department department;
 
-    private String day;
-    private LocalTime time;
+    private String day; // Change this to String to match the frontend
+    private LocalTime time; // Keep this as LocalTime for time representation
 
     @ManyToOne
+    @JoinColumn(name = "classroom_id") // Assuming a foreign key column for classroom
     private Classroom classroom;
 
     // Getters and Setters
